@@ -14,6 +14,9 @@ final class ChainableTypeChecker implements TypeChecker
     /** @var bool */
     private $is_nullable;
 
+    /** @var mixed */
+    private $default;
+
     public function __construct(TypeChecker $checker, bool $is_required = false, bool $is_nullable = false)
     {
         $this->checker = $checker;
@@ -60,5 +63,16 @@ final class ChainableTypeChecker implements TypeChecker
     public function isNullable(): self
     {
         return new self($this->checker, $this->is_required, true);
+    }
+
+    /**
+     * @param mixed $value
+     * @return ChainableTypeChecker
+     */
+    public function default($value): ChainableTypeChecker
+    {
+        $this->default = $value;
+
+        return $this;
     }
 }
