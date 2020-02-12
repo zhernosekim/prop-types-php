@@ -114,6 +114,11 @@ final class PropTypes
         return new ChainableTypeChecker(new PrimitiveTypeChecker('object'));
     }
 
+    public static function datetime(): ChainableTypeChecker
+    {
+        return new ChainableTypeChecker(new PrimitiveTypeChecker('string'));
+    }
+
     public static function oneOfType(array $checkers): ChainableTypeChecker
     {
         return new ChainableTypeChecker(new UnionTypeChecker($checkers));
