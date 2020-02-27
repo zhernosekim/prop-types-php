@@ -4,13 +4,19 @@ namespace Prezly\PropTypes;
 use InvalidArgumentException;
 use Prezly\PropTypes\Checkers\AnyTypeChecker;
 use Prezly\PropTypes\Checkers\ArrayOfTypeChecker;
+use Prezly\PropTypes\Checkers\ArrayTypeChecker;
+use Prezly\PropTypes\Checkers\BooleanTypeChecker;
 use Prezly\PropTypes\Checkers\CallbackTypeChecker;
 use Prezly\PropTypes\Checkers\ChainableTypeChecker;
+use Prezly\PropTypes\Checkers\DatetimeTypeChecker;
+use Prezly\PropTypes\Checkers\DoubleTypeChecker;
 use Prezly\PropTypes\Checkers\EnumTypeChecker;
+use Prezly\PropTypes\Checkers\FloatTypeChecker;
 use Prezly\PropTypes\Checkers\InstanceTypeChecker;
-use Prezly\PropTypes\Checkers\PrimitiveTypeChecker;
+use Prezly\PropTypes\Checkers\IntegerTypeChecker;
 use Prezly\PropTypes\Checkers\ShapeTypeChecker;
 use Prezly\PropTypes\Checkers\StrictShapeTypeChecker;
+use Prezly\PropTypes\Checkers\StringTypeChecker;
 use Prezly\PropTypes\Checkers\TypeChecker;
 use Prezly\PropTypes\Checkers\UnionTypeChecker;
 use Prezly\PropTypes\Exceptions\PropTypeException;
@@ -71,7 +77,7 @@ final class PropTypes
 
     public static function array(): ChainableTypeChecker
     {
-        return new ChainableTypeChecker(new PrimitiveTypeChecker('array'));
+        return new ChainableTypeChecker(new ArrayTypeChecker('array'));
     }
 
     public static function arrayOf(TypeChecker $checker): ChainableTypeChecker
@@ -81,7 +87,7 @@ final class PropTypes
 
     public static function bool(): ChainableTypeChecker
     {
-        return new ChainableTypeChecker(new PrimitiveTypeChecker('boolean'));
+        return new ChainableTypeChecker(new BooleanTypeChecker('boolean'));
     }
 
     public static function callback(callable $callback): ChainableTypeChecker
@@ -101,22 +107,22 @@ final class PropTypes
 
     public static function int(): ChainableTypeChecker
     {
-        return new ChainableTypeChecker(new PrimitiveTypeChecker('integer'));
+        return new ChainableTypeChecker(new IntegerTypeChecker('integer'));
     }
 
     public static function float(): ChainableTypeChecker
     {
-        return new ChainableTypeChecker(new PrimitiveTypeChecker('double'));
+        return new ChainableTypeChecker(new FloatTypeChecker('double'));
     }
 
     public static function object(): ChainableTypeChecker
     {
-        return new ChainableTypeChecker(new PrimitiveTypeChecker('object'));
+        return new ChainableTypeChecker(new ObjectTypeChecker('object'));
     }
 
     public static function datetime(): ChainableTypeChecker
     {
-        return new ChainableTypeChecker(new PrimitiveTypeChecker('string'));
+        return new ChainableTypeChecker(new DatetimeTypeChecker('string'));
     }
 
     public static function oneOfType(array $checkers): ChainableTypeChecker
@@ -136,6 +142,6 @@ final class PropTypes
 
     public static function string(): ChainableTypeChecker
     {
-        return new ChainableTypeChecker(new PrimitiveTypeChecker('string'));
+        return new ChainableTypeChecker(new StringTypeChecker('string'));
     }
 }

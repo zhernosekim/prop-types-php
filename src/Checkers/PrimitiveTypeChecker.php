@@ -3,8 +3,9 @@ namespace Prezly\PropTypes\Checkers;
 
 use Prezly\PropTypes\Exceptions\PropTypeException;
 
-final class PrimitiveTypeChecker implements TypeChecker
+class PrimitiveTypeChecker implements TypeChecker
 {
+
     /** @var string */
     private $expected_type;
 
@@ -27,5 +28,13 @@ final class PrimitiveTypeChecker implements TypeChecker
             );
         }
         return null;
+    }
+
+    /**
+     * @return string
+     */
+    public function getExpectedType(): string 
+    {
+        return $this->expected_type;
     }
 }
