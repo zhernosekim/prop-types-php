@@ -43,6 +43,14 @@ final class EnumTypeChecker implements TypeChecker
     }
 
     /**
+     * @return string[]
+     */
+    public function getExpectedValues(): array 
+    {
+        return $this->expected_values;
+    }
+
+    /**
      * @param mixed $value
      * @return string
      */

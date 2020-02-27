@@ -33,4 +33,12 @@ final class InstanceTypeChecker implements TypeChecker
 
         return null;
     }
+
+    /**
+     * @return string
+     */
+    public function getExpectedClass(): string
+    {
+        return $this->expected_class;
+    }   
 }

@@ -57,4 +57,12 @@ final class ShapeTypeChecker implements TypeChecker
 
         return null;
     }
+
+    /**
+     * @return \Prezly\PropTypes\Checkers\TypeChecker[]
+     */
+    public function getShapeTypes(): array
+    {
+        return $this->shape_types;
+    }
 }

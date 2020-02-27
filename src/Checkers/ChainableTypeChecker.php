@@ -2,6 +2,7 @@
 namespace Prezly\PropTypes\Checkers;
 
 use Prezly\PropTypes\Exceptions\PropTypeException;
+use \Prezly\PropTypes\Checkers\TypeChecker;
 
 final class ChainableTypeChecker implements TypeChecker
 {
@@ -14,14 +15,22 @@ final class ChainableTypeChecker implements TypeChecker
     /** @var bool */
     private $is_nullable;
 
+    /** @var bool */
+    private $is_model;
+
     /** @var mixed */
     private $default;
 
-    public function __construct(TypeChecker $checker, bool $is_required = false, bool $is_nullable = false)
-    {
+    public function __construct(
+        TypeChecker $checker,
+        bool $is_required = false,
+        bool $is_nullable = false,
+        bool $is_model = false
+    ) {
         $this->checker = $checker;
         $this->is_required = $is_required;
         $this->is_nullable = $is_nullable;
+        $this->is_model = $is_model;
     }
 
     /**
@@ -57,12 +66,17 @@ final class ChainableTypeChecker implements TypeChecker
 
     public function isRequired(): self
     {
-        return new self($this->checker, true, $this->is_nullable);
+        return new self($this->checker, true, $this->is_nullable, $this->is_model);
     }
 
     public function isNullable(): self
     {
-        return new self($this->checker, $this->is_required, true);
+        return new self($this->checker, $this->is_required, true, $this->is_model);
+    }
+
+    public function isModel(): self
+    {
+        return new self($this->checker, $this->is_required, $this->is_nullable, true);
     }
 
     /**
@@ -74,5 +88,57 @@ final class ChainableTypeChecker implements TypeChecker
         $this->default = $value;
 
         return $this;
+    }
+
+    /**
+     * @return \Prezly\PropTypes\Checkers\TypeChecker[]|null
+     */
+    public function getFields(): ?array 
+    {
+        if ($this->checker instanceof ShapeTypeChecker) {
+            return $this->checker->getShapeTypes();
+        }
+        
+        return null;
+    }
+
+    /**
+     * @return \Prezly\PropTypes\Checkers\TypeChecker
+     */
+    public function getTypeChecker(): TypeChecker
+    {
+        return $this->checker;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDefaultValue()
+    {
+        return $this->default;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsNullable(): bool
+    {
+        return $this->is_nullable;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsRequired(): bool
+    {
+        return $this->is_required;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsModel(): bool
+    {
+        return $this->is_model;
     }
 }
