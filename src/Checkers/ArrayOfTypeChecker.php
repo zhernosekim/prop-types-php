@@ -41,4 +41,20 @@ final class ArrayOfTypeChecker implements TypeChecker
 
         return null;
     }
+
+    /**
+     * @return string
+     */
+    public function getTypeOfItems(): string 
+    {
+        return $this->checker->getExpectedType();
+    }
+
+    /**
+     * @return TypeChecker
+     */
+    public function getInnerChecker(): TypeChecker
+    {
+        return $this->checker;
+    }
 }

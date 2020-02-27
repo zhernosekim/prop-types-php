@@ -124,3 +124,6 @@ function myFunction(array $options): void
       'title' => PropTypes::string()->isNullable(),
    ]
    ```
+3. Added DateTime type.
+4. You can set default value with method default like PropTypes::string()->default('test').
+5. You can specify that shape is model like PropTypes::shape()->isModel().
