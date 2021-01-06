@@ -53,6 +53,14 @@ final class ArrayOfTypeChecker implements TypeChecker
     /**
      * @return TypeChecker
      */
+    public function getCheckerOfItems(): TypeChecker
+    {
+        return $this->checker->getTypeChecker();
+    }
+
+    /**
+     * @return TypeChecker
+     */
     public function getInnerChecker(): TypeChecker
     {
         return $this->checker;
