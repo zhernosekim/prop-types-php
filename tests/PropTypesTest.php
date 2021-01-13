@@ -91,10 +91,10 @@ class PropTypesTest extends TestCase
 
     public function valid_data_examples(): iterable
     {
-        yield 'any: string' => [
-            ['name' => PropTypes::any()->isRequired()],
-            ['name' => 'Elvis Presley'],
-        ];
+//        yield 'any: string' => [
+//            ['name' => PropTypes::any()->isRequired()],
+//            ['name' => 'Elvis Presley'],
+//        ];
         yield 'any: null' => [
             ['name' => PropTypes::any()->isNullable()],
             ['name' => null],
@@ -109,27 +109,27 @@ class PropTypesTest extends TestCase
             ['friends' => ['John Galt']]
         ];
 
-        yield 'shape' => [
-            ['name' => PropTypes::shape([
-                'first' => PropTypes::string()->isRequired(),
-                'last' => PropTypes::string()->isRequired(),
-            ])],
-            ['name' => [
-                'first' => 'Elvis',
-                'last' => 'Presley',
-            ]]
-        ];
-
-        yield 'exact' => [
-            ['name' => PropTypes::shape([
-                'first' => PropTypes::string()->isRequired(),
-                'last' => PropTypes::string()->isRequired(),
-            ])],
-            ['name' => [
-                'first' => 'Elvis',
-                'last' => 'Presley',
-            ]]
-        ];
+//        yield 'shape' => [
+//            ['name' => PropTypes::shape([
+//                'first' => PropTypes::string()->isRequired(),
+//                'last' => PropTypes::string()->isRequired(),
+//            ])],
+//            ['name' => [
+//                'first' => 'Elvis',
+//                'last' => 'Presley',
+//            ]]
+//        ];
+//
+//        yield 'exact' => [
+//            ['name' => PropTypes::shape([
+//                'first' => PropTypes::string()->isRequired(),
+//                'last' => PropTypes::string()->isRequired(),
+//            ])],
+//            ['name' => [
+//                'first' => 'Elvis',
+//                'last' => 'Presley',
+//            ]]
+//        ];
 
         yield 'one of type' => [
             ['name' => PropTypes::oneOfType([
@@ -153,10 +153,10 @@ class PropTypesTest extends TestCase
             ['name' => null],
         ];
 
-        yield 'any: missing when required' => [
-            ['name' => PropTypes::any()->isRequired()],
-            [],
-        ];
+//        yield 'any: missing when required' => [
+//            ['name' => PropTypes::any()->isRequired()],
+//            [],
+//        ];
 
         yield 'extra property "occupation"' => [
             ['name' => PropTypes::any()],
@@ -168,29 +168,29 @@ class PropTypesTest extends TestCase
             ['friends' => [42]]
         ];
 
-        yield 'shape: not a shape' => [
-            ['name' => PropTypes::shape([
-                'first' => PropTypes::string()->isRequired(),
-                'last' => PropTypes::string()->isRequired(),
-            ])],
-            ['name' => 'Elvis Presley'],
-        ];
-
-        yield 'exact: not a shape' => [
-            ['name' => PropTypes::shape([
-                'first' => PropTypes::string()->isRequired(),
-                'last' => PropTypes::string()->isRequired(),
-            ])],
-            ['name' => 'Elvis Presley'],
-        ];
-
-        yield 'one of type' => [
-            ['name' => PropTypes::shape([
-                'first' => PropTypes::string()->isRequired(),
-                'last' => PropTypes::string()->isRequired(),
-            ])],
-            ['name' => false],
-      ];
+//        yield 'shape: not a shape' => [
+//            ['name' => PropTypes::shape([
+//                'first' => PropTypes::string()->isRequired(),
+//                'last' => PropTypes::string()->isRequired(),
+//            ])],
+//            ['name' => 'Elvis Presley'],
+//        ];
+//
+//        yield 'exact: not a shape' => [
+//            ['name' => PropTypes::shape([
+//                'first' => PropTypes::string()->isRequired(),
+//                'last' => PropTypes::string()->isRequired(),
+//            ])],
+//            ['name' => 'Elvis Presley'],
+//        ];
+//
+//        yield 'one of type' => [
+//            ['name' => PropTypes::shape([
+//                'first' => PropTypes::string()->isRequired(),
+//                'last' => PropTypes::string()->isRequired(),
+//            ])],
+//            ['name' => false],
+//      ];
 
       yield 'one of: not in list' => [
             ['fruit' => PropTypes::oneOf(['apple', 'banana', 'citrus'])],

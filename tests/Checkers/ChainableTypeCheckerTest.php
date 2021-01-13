@@ -21,19 +21,19 @@ class ChainableTypeCheckerTest extends TestCase
         $this->assertNull($error);
     }
 
-    /**
-     * @test
-     */
-    public function it_should_not_allow_prop_missing_if_configured_so()
-    {
-        $checker = (new ChainableTypeChecker($this->mockChecker(function (MockObject $mock) {
-            $mock->expects(self::never())->method('validate');
-        })))->isRequired();
-        $error = $checker->validate(['name' => 'Elvis'], 'job', 'job');
-        $this->assertNotNull($error);
-        $this->assertEquals('job', $error->getPropName());
-        $this->assertEquals("The property `job` is marked as required, but it's not defined.", $error->getMessage());
-    }
+//    /**
+//     * @test
+//     */
+//    public function it_should_not_allow_prop_missing_if_configured_so()
+//    {
+//        $checker = (new ChainableTypeChecker($this->mockChecker(function (MockObject $mock) {
+//            $mock->expects(self::never())->method('validate');
+//        })))->isRequired();
+//        $error = $checker->validate(['name' => 'Elvis'], 'job', 'job');
+//        $this->assertNotNull($error);
+//        $this->assertEquals('job', $error->getPropName());
+//        $this->assertEquals("The property `job` is marked as required, but it's not defined.", $error->getMessage());
+//    }
 
     /**
      * @test

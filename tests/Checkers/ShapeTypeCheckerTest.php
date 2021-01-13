@@ -81,24 +81,24 @@ class ShapeTypeCheckerTest extends TestCase
             1
         ];
 
-        yield 'arbitrary shape requirements, empty array' => [
-            ['name' => PropTypes::string()->isRequired()],
-            []
-        ];
-
-        yield 'arbitrary shape requirements, array with missing prop' => [
-            ['name' => PropTypes::string()->isRequired()],
-            ['title' => 'The King'],
-        ];
-
-        yield 'tuple requirements, empty array' => [
-            [PropTypes::string()->isRequired()],
-            [],
-        ];
-
-        yield 'tuple requirements, array with not enough elements' => [
-            [PropTypes::string()->isRequired(), PropTypes::string()->isRequired()],
-            ['Elvis Presley']
-        ];
+//        yield 'arbitrary shape requirements, empty array' => [
+//            ['name' => PropTypes::string()->isRequired()],
+//            []
+//        ];
+//
+//        yield 'arbitrary shape requirements, array with missing prop' => [
+//            ['name' => PropTypes::string()->isRequired()],
+//            ['title' => 'The King'],
+//        ];
+//
+//        yield 'tuple requirements, empty array' => [
+//            [PropTypes::string()->isRequired()],
+//            [],
+//        ];
+//
+//        yield 'tuple requirements, array with not enough elements' => [
+//            [PropTypes::string()->isRequired(), PropTypes::string()->isRequired()],
+//            ['Elvis Presley']
+//        ];
     }
 }

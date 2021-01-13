@@ -51,28 +51,25 @@ function myFunction(array $options): void
         // An array of a certain type
         'optionalArrayOf' => PropTypes::arrayOf(PropTypes::int()),
 
-        // You can chain any of the above with `isRequired`
-        // to make sure an error is thrown if the prop isn't provided.
-
         // An object taking on a particular shape
         'optionalArrayWithShape' => PropTypes::shape([
             'optionalProperty' => PropTypes::string(),
-            'requiredProperty' => PropTypes::int()->isRequired(),
+            'requiredProperty' => PropTypes::int(),
         ]),
 
         // An object with errors on extra properties
         'optionalObjectWithStrictShape' => PropTypes::exact([
-            'optionalProperty' => PropTypes::string(),
-            'requiredProperty' => PropTypes::int()->isRequired(),
+            'optionalProperty' => PropTypes::string()->isNullable(),
+            'requiredProperty' => PropTypes::int(),
         ]),
 
         // A value of any data type (except null)
-        'requiredAny' => PropTypes::any()->isRequired(),
+        'requiredAny' => PropTypes::any(),
         // A value of any data type (including null)
-        'requiredNullableAny' => PropTypes::any()->isRequired()->isNullable(),
+        'requiredNullableAny' => PropTypes::any()->isNullable(),
 
         // A required property that can be string or null
-        'requiredNullableString' => PropTypes::string()->isRequired()->isNullable(),
+        'requiredNullableString' => PropTypes::string()->isNullable(),
 
         // You can also specify a custom validator.
         // It should return a PropTypeException instance if the validation fails.
